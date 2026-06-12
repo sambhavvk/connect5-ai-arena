@@ -1,4 +1,5 @@
 """
+nn_agent.py
 NN-guided MCTS agent for Connect‑Five (9×10).
 Uses a policy network (ONNX) to guide tree search with PUCT, and random rollouts for value.
 """

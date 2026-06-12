@@ -1,4 +1,5 @@
 """
+mcts_agent.py
 Pure Monte Carlo Tree Search agent for Connect‑Five (9×10).
 No neural network – uses random rollouts and UCB1.
 """
