@@ -1,0 +1,18 @@
+jupyterlab==4.2.5
+notebook==7.2.2                 # or jupyter notebook
+
+torch==2.4.1                    # PyTorch for CNNs
+torchvision==0.19.1             # if using torchvision transforms
+
+pandas==2.2.3
+numpy==1.26.4
+matplotlib==3.9.2
+seaborn==0.13.2                 # prettier plots (optional)
+
+scikit-learn==1.5.2             # metrics, preprocessing
+
+# Game theory / OpenSpiel (optional, if you want to generate new data)
+# open-spiel==1.5.0            # uncomment if you need to run OpenSpiel locally
+
+# ONNX export
+onnx==1.16.2

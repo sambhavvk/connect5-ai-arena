@@ -1,1 +1,6 @@
 REQUIREMENTS.md
+filestructure
+/data
+/ml/data
+/venv
+plan
