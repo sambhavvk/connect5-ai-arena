@@ -4,3 +4,6 @@ filestructure
 /ml/data
 /venv
 plan
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
