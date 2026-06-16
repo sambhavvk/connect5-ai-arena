@@ -1,4 +1,5 @@
 """
+minimax_agent.py
 Minimax agent with alpha-beta pruning for Connect‑Five (9×10 board, 5 in a row).
 """
 
