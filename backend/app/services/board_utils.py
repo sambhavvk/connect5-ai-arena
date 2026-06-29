@@ -52,7 +52,7 @@ def check_win_at(board: np.ndarray, row: int, col: int, player_idx: int = 0) -> 
 def get_legal_columns(board: np.ndarray) -> list:
     """Return list of non‑full columns."""
     top = board[0, -1, :] + board[1, -1, :]
-    return [c for c in range(COLS) if top[c] < 2]
+    return [c for c in range(COLS) if top[c] == 0]
 
 def is_draw(board: np.ndarray) -> bool:
     """True if no legal moves and no winner."""

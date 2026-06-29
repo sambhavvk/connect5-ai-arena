@@ -49,6 +49,9 @@ class PureMCTSAgent:
             self._backpropagate(node, reward)
 
         # Choose child with highest visit count
+        if not root.children:
+            # No children (e.g. board full) → pick any valid action
+            return valid_actions[0] if valid_actions else 0
         best_action = max(root.children, key=lambda a: root.children[a].visits)
         return best_action
 
@@ -66,6 +69,8 @@ class PureMCTSAgent:
                 if ucb > best_ucb:
                     best_ucb = ucb
                     best_child = child
+            if best_child is None:
+                break  # safety: no children (shouldn't happen, but guard)
             node = best_child
 
         # Expand if possible
@@ -94,6 +99,8 @@ class PureMCTSAgent:
 
         while True:
             legal = get_legal_columns(state)
+            if not legal:
+                return 0.0
             action = np.random.choice(legal)
             state, win = make_move_and_check_win(state, action)
             if win:
@@ -182,7 +189,7 @@ def check_win_at(board: np.ndarray, row: int, col: int, player_idx: int) -> bool
 def get_legal_columns(board: np.ndarray) -> list:
     """Return columns with empty space at top."""
     top = board[0, -1, :] + board[1, -1, :]
-    return [c for c in range(COLS) if top[c] < 2]
+    return [c for c in range(COLS) if top[c] == 0]
 
 
 def is_terminal(board: np.ndarray) -> bool:

@@ -59,6 +59,8 @@ class NNAgent:
             self._backpropagate(node, reward)
 
         # Choose child with most visits
+        if not root.children:
+            return valid_actions[0] if valid_actions else 0
         best_action = max(root.children, key=lambda a: root.children[a].visits)
         return best_action
 
@@ -84,6 +86,8 @@ class NNAgent:
                 if uct > best_uct:
                     best_uct = uct
                     best_child = child
+            if best_child is None:
+                break
             node = best_child
         return node
 
@@ -114,6 +118,8 @@ class NNAgent:
 
         while True:
             legal = get_legal_columns(state)
+            if not legal:
+                return 0.0
             action = np.random.choice(legal)
             state, win = make_move_and_check_win(state, action)
             if win:
@@ -197,7 +203,7 @@ def check_win_at(board: np.ndarray, row: int, col: int, player_idx: int) -> bool
 
 def get_legal_columns(board: np.ndarray) -> list:
     top = board[0, -1, :] + board[1, -1, :]
-    return [c for c in range(COLS) if top[c] < 2]
+    return [c for c in range(COLS) if top[c] == 0]
 
 
 def is_terminal(board: np.ndarray) -> bool:

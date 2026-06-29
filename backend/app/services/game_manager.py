@@ -65,8 +65,8 @@ class GameManager:
         col = self.ai_agent.choose_action(self.board, valid)
 
         self.board, row = bu.make_move(self.board, col, player=1)
-        # Did AI win?
-        if bu.check_win_at(self.board, row, col, player_idx=1):
+        # After make_move swaps channels, AI's piece is now on channel 0
+        if bu.check_win_at(self.board, row, col, player_idx=0):
             self.winner = 1
             return col, True, self.get_board_2d()
 

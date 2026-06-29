@@ -83,7 +83,7 @@ class MinimaxAgent:
     @staticmethod
     def _get_legal_columns(board: np.ndarray) -> list:
         top = board[0, -1, :] + board[1, -1, :]  # top row (index -1)
-        return [c for c in range(COLS) if top[c] < 2]
+        return [c for c in range(COLS) if top[c] == 0]
 
     def _alpha_beta(self, board: np.ndarray, depth: int,
                     alpha: float, beta: float) -> float:

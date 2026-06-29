@@ -70,7 +70,7 @@ async def make_move(game_id: str, move: MoveRequest):
         active_games.pop(game_id, None)
         return MoveResponse(
             game_id=game_id,
-            board=board.tolist(),  # 2D
+            board=board,  # already a 2D list from game_manager
             current_player=0,
             valid_columns=[],
             winner=0
@@ -83,7 +83,7 @@ async def make_move(game_id: str, move: MoveRequest):
             active_games.pop(game_id, None)
             return MoveResponse(
                 game_id=game_id,
-                board=board.tolist(),
+                board=board,
                 current_player=1,
                 valid_columns=[],
                 winner=1,
@@ -91,7 +91,7 @@ async def make_move(game_id: str, move: MoveRequest):
             )
         return MoveResponse(
             game_id=game_id,
-            board=board.tolist(),
+            board=board,
             current_player=0,
             valid_columns=manager.valid_columns(),
             ai_move_column=ai_col
@@ -102,7 +102,7 @@ async def make_move(game_id: str, move: MoveRequest):
         active_games.pop(game_id, None)
         return MoveResponse(
             game_id=game_id,
-            board=board.tolist(),
+            board=board,
             current_player=0,
             valid_columns=[],
             winner=None
@@ -110,7 +110,7 @@ async def make_move(game_id: str, move: MoveRequest):
 
     return MoveResponse(
         game_id=game_id,
-        board=board.tolist(),
+        board=board,
         current_player=0,
         valid_columns=manager.valid_columns()
     )
