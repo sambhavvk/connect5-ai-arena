@@ -1,0 +1,193 @@
+/* ============================================================
+   Connect5 AI Arena — Global Styles & CSS Custom Properties
+   Easy to theme: just tweak the :root variables below.
+   ============================================================ */
+
+:root {
+  /* --- Colors (light mode) --- */
+  --text: #374151;
+  --text-h: #111827;
+  --text-muted: #9ca3af;
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-bg: rgba(99, 102, 241, 0.08);
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+
+  /* --- Board colors --- */
+  --board-bg: #1e40af;
+  --board-grid: #1e3a8a;
+  --cell-empty: #f0f4ff;
+  --cell-p1: #ef4444;
+  --cell-p1-ring: #dc2626;
+  --cell-p2: #facc15;
+  --cell-p2-ring: #eab308;
+  --cell-hover: rgba(255, 255, 255, 0.25);
+  --cell-winning: #ffffff;
+
+  /* --- Typography --- */
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+
+  /* --- Spacing & sizing --- */
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.07), 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  font: 16px/1.5 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Dark mode --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #d1d5db;
+    --text-h: #f9fafb;
+    --text-muted: #6b7280;
+    --bg: #111827;
+    --surface: #1f2937;
+    --border: #374151;
+    --accent: #818cf8;
+    --accent-hover: #6366f1;
+    --accent-bg: rgba(129, 140, 248, 0.1);
+    --board-bg: #1e3a5f;
+    --board-grid: #1a3352;
+    --cell-empty: #e2e8f0;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.4), 0 10px 15px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+  color: var(--text-h);
+  font-weight: 600;
+  margin: 0;
+}
+
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1.1rem; }
+
+/* --- Buttons --- */
+button {
+  font-family: var(--sans);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text-h);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+.btn-danger:hover {
+  opacity: 0.9;
+}
+
+/* --- Utility --- */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+  width: 100%;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* --- Spinner (for loading states) --- */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Scrollbar (optional polish) --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
